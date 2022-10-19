@@ -1,32 +1,33 @@
 package com.example.laboratorio.model;
 
 public class Loan {
-    private Element element;
-    private Student student;
-    private Monitor monitor;
+    private String element;
+    private String student;
+    private String monitor;
     private Integer amount;
+    private Integer id;
 
-    public Element getElement() {
+    public String getElement() {
         return element;
     }
 
-    public void setElement(Element element) {
+    public void setElement(String element) {
         this.element = element;
     }
 
-    public Student getStudent() {
+    public String getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(String student) {
         this.student = student;
     }
 
-    public Monitor getMonitor() {
+    public String getMonitor() {
         return monitor;
     }
 
-    public void setMonitor(Monitor monitor) {
+    public void setMonitor(String monitor) {
         this.monitor = monitor;
     }
 
@@ -38,13 +39,21 @@ public class Loan {
         this.amount = amount;
     }
 
-    public Loan(Element element, Student student, Monitor monitor, Integer amount) {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Loan(String element, String student, String monitor, Integer amount, int id) {
         this.element = element;
         this.student = student;
         this.monitor = monitor;
         this.amount = amount;
+        this.id = id;
     }
-
     public Loan() {
     }
 }

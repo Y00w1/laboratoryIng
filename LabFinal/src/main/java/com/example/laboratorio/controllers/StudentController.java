@@ -1,11 +1,13 @@
 package com.example.laboratorio.controllers;
 
 import com.example.laboratorio.model.Student;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -13,8 +15,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.ResourceBundle;
 
-public class StudentController implements Initializable {
+public class
 
+StudentController implements Initializable {
+
+    @FXML
+    private TextField searchTxt;
     @FXML
     private TableView<Student> tbStudent;
     @FXML
@@ -62,10 +68,17 @@ public class StudentController implements Initializable {
         mfc.switchToLoanScene(event);
     }
 
+    @FXML
     public void addStudentBtn(ActionEvent actionEvent) {
         mfc.btnAddStudent(idStudent.getText(), nameStudent.getText(), emailStudent.getText(), numberStudent.getText(), comboxCareer.getSelectionModel().getSelectedItem(), Integer.parseInt(semesterStudent.getText()));
-        tbStudent.setItems(mfc.laboratorio.getUserService().getStudentObservableList());
+        tbStudent.setItems(mfc.getObservableListStudent());
         tbStudent.refresh();
+        idStudent.setText("");
+        nameStudent.setText("");
+        emailStudent.setText("");
+        numberStudent.setText("");
+        comboxCareer.setValue("");
+        semesterStudent.setText("");
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -79,5 +92,49 @@ public class StudentController implements Initializable {
         ArrayList<String> list = new ArrayList<>();
         Collections.addAll(list, "Software", "Industrial", "civil");
         comboxCareer.getItems().addAll(list);
+    }
+
+    @FXML
+    public void deleteStudentBtn(ActionEvent actionEvent) {
+        Student stu = tbStudent.getSelectionModel().getSelectedItem();
+        mfc.btnDeleteStudent(stu);
+        tbStudent.setItems(mfc.getObservableListStudent());
+        tbStudent.refresh();
+        idStudent.setText("");
+        nameStudent.setText("");
+        emailStudent.setText("");
+        numberStudent.setText("");
+        comboxCareer.setValue("");
+        semesterStudent.setText("");
+    }
+    @FXML
+    public void editStudentBrn(ActionEvent actionEvent) {
+        Student stu = new Student(idStudent.getText(), nameStudent.getText(), emailStudent.getText(), numberStudent.getText(), comboxCareer.getSelectionModel().getSelectedItem(), Integer.parseInt(semesterStudent.getText()));
+        Integer indx = tbStudent.getSelectionModel().getSelectedIndex();
+        mfc.btnEditStudent(indx, stu);
+        tbStudent.setItems(mfc.getObservableListStudent());
+        tbStudent.refresh();
+        idStudent.setText("");
+        nameStudent.setText("");
+        emailStudent.setText("");
+        numberStudent.setText("");
+        comboxCareer.setValue("");
+        semesterStudent.setText("");
+    }
+    @FXML
+    public void selectStudent(MouseEvent mouseEvent) {
+        Student stu = tbStudent.getSelectionModel().getSelectedItem();
+        idStudent.setText(stu.getId());
+        nameStudent.setText(stu.getName());
+        emailStudent.setText(stu.getEmail());
+        numberStudent.setText(stu.getNumber());
+        comboxCareer.setValue(stu.getCareer());
+        semesterStudent.setText(stu.getSemester().toString());
+    }
+    @FXML
+    public void searchTable(MouseEvent mouseEvent) {
+        FilteredList<Student> filteredData = new FilteredList<>(mfc.getObservableListStudent(), p->true);
+        tbStudent.setItems(filteredData);
+        mfc.searchStudent(filteredData, searchTxt);
     }
 }
