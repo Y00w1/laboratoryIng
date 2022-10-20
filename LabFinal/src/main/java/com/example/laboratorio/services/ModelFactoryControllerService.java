@@ -19,6 +19,8 @@ public interface ModelFactoryControllerService {
     void searchElement(FilteredList<Element> filteredlist, TextField textField);
     Element validateElement(String element);
     void reduceAmountElement(Element element, Integer amount);
+
+    Element elementMaxLoans();
     ObservableList<Element> getObservableListElement ();
 
 
@@ -29,6 +31,8 @@ public interface ModelFactoryControllerService {
     void btnEditStudent(Integer indx, Student student);
     void searchStudent(FilteredList<Student> filteredlist, TextField textField);
     void addLoanElement(Element element);
+
+    Student studentMaxLoans();
 
     //Scenes
     void switchScene(ActionEvent e, String resource) throws IOException;
@@ -43,8 +47,11 @@ public interface ModelFactoryControllerService {
     void addLoanStudent(Student student);
     Student validateStudent(String student);
     void searchLoan(FilteredList<Loan> loanFilteredList, TextField textField);
+    void reloadTableC(ObservableList<Element> elements, ObservableList<Student> students);
 
     //Monitor
     Monitor getMonitor();
     void editLoansMonitor();
+
+    Monitor monitorInformation();
 }

@@ -19,4 +19,9 @@ public class MonitorServiceImpl implements MonitorService {
         loans+=1;
         monitor.setLoans(loans);
     }
+
+    @Override
+    public Monitor monitorInformation() {
+        return monitor;
+    }
 }

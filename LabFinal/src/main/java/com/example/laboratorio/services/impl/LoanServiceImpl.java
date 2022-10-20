@@ -34,8 +34,9 @@ public class LoanServiceImpl implements LoanService{
     @Override
     public Boolean addLoan(String element, String student, Integer amount, Integer id, ObservableList<Element> elements, ObservableList<Student> students) {
         Element element1 = validateElement(elements, element);
+        Student student1 = validateStudent(students, student);
         if (element1.getAmount()>=amount){
-            loanObservableList.add(new Loan(element1.getName(), validateStudent(students, student).getName(), monitorService.getMonitor().getName(), amount, id));
+            loanObservableList.add(new Loan(element1.getName(), student1.getName(), monitorService.getMonitor().getName(), amount, id, element1.getId(), student1.getId()));
             return true;
         }else {
             System.out.println("Invalid amount");
@@ -66,13 +67,30 @@ public class LoanServiceImpl implements LoanService{
 
     @Override
     public Student validateStudent(ObservableList<Student> students, String student) {
-            Student stu2 = null;
-            for (Student stu : students) {
-                if (stu.getId().equals(student)){
-                    stu2 = stu;
+        Student stu2 = null;
+        for (Student stu : students) {
+            if (stu.getId().equals(student)) {
+                stu2 = stu;
+            }
+        }
+        return stu2;
+    }
+    @Override
+    public void reloadTable(ObservableList<Element> elements, ObservableList<Student> students){
+        for (Loan loan: loanObservableList){
+            for (Element element:elements){
+                if (loan.getIdElement().equals(element.getId())){
+                    loan.setElement(element.getName());
+                    loan.setIdElement(element.getId());
                 }
             }
-            return stu2;
+            for (Student student:students){
+                if (loan.getIdStudent().equals(student.getId())){
+                    loan.setStudent(student.getName());
+                    loan.setIdStudent(student.getId());
+                }
+            }
         }
+    }
 }
 

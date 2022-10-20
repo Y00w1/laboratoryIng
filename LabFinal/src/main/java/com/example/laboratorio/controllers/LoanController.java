@@ -51,6 +51,7 @@ public class LoanController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
+        mfc.reloadTableC(mfc.getObservableListElement(), mfc.getObservableListStudent());
         tbLoan.setItems(mfc.getObservableListLoan());
         tableAmountLoan.setCellValueFactory(new PropertyValueFactory<>("amount"));
         tableElementLoan.setCellValueFactory(new PropertyValueFactory<>("element"));

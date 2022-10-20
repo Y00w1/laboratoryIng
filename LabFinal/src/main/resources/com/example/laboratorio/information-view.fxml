@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="500" maxWidth="600" minHeight="500" minWidth="600" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.laboratorio.controllers.InformationController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="40.0" prefWidth="600.0" spacing="13.0" BorderPane.alignment="CENTER">
          <children>
@@ -20,6 +24,35 @@
       </HBox>
    </top>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: aquamarine;" BorderPane.alignment="CENTER" />
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER">
+         <children>
+            <HBox layoutX="-2.0" prefHeight="460.0" prefWidth="607.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="462.0" prefWidth="201.0" spacing="50.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#monitorInfo" prefHeight="26.0" prefWidth="120.0" text="Monitor Info" />
+                              <Button mnemonicParsing="false" onAction="#studentMaxLoan" prefHeight="26.0" prefWidth="120.0" text="Student Max Loans" />
+                              <Button mnemonicParsing="false" onAction="#elementMaxLoan" prefHeight="26.0" prefWidth="120.0" text="Element Max Loans" />
+                              <ImageView fitHeight="81.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../imgs/Avh%20Logo.png" />
+                                 </image>
+                                 <VBox.margin>
+                                    <Insets left="18.0" />
+                                 </VBox.margin>
+                              </ImageView>
+                           </children>
+                           <padding>
+                              <Insets left="40.0" top="50.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </Pane>
+                  <TextArea fx:id="textView" prefHeight="460.0" prefWidth="402.0" HBox.hgrow="NEVER" />
+               </children>
+            </HBox>
+         </children></Pane>
    </center>
 </BorderPane>

@@ -22,7 +22,7 @@ public class SceneController implements SceneService {
     public void switchScene(ActionEvent e, String resource) throws IOException {
         root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(resource)));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
-        scene = new Scene(root, 600, 500);
+        scene = new Scene(root, 600, 450);
         stage.setScene(scene);
         stage.show();
     }

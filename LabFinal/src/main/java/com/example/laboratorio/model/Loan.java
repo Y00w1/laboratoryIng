@@ -6,6 +6,8 @@ public class Loan {
     private String monitor;
     private Integer amount;
     private Integer id;
+    private String idElement;
+    private String idStudent;
 
     public String getElement() {
         return element;
@@ -47,13 +49,36 @@ public class Loan {
         this.id = id;
     }
 
-    public Loan(String element, String student, String monitor, Integer amount, int id) {
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getIdElement() {
+        return idElement;
+    }
+
+    public void setIdElement(String idElement) {
+        this.idElement = idElement;
+    }
+
+    public String getIdStudent() {
+        return idStudent;
+    }
+
+    public void setIdStudent(String idStudent) {
+        this.idStudent = idStudent;
+    }
+
+    public Loan(String element, String student, String monitor, Integer amount, Integer id, String idElement, String idStudent) {
         this.element = element;
         this.student = student;
         this.monitor = monitor;
         this.amount = amount;
         this.id = id;
+        this.idElement = idElement;
+        this.idStudent = idStudent;
     }
+
     public Loan() {
     }
 }

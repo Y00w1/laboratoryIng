@@ -88,6 +88,11 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     }
 
     @Override
+    public Element elementMaxLoans() {
+        return laboratorio.getElementService().elementMaxLoans();
+    }
+
+    @Override
     public Element validateElement(String element){
         return laboratorio.getLoanService().validateElement(getObservableListElement(),element);
     }
@@ -96,6 +101,7 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     public void addLoanElement(Element element){
         laboratorio.getElementService().addLoanElement(element);
     }
+
 
     //Function Student
     @Override
@@ -133,7 +139,12 @@ public class ModelFactoryController implements ModelFactoryControllerService {
         return laboratorio.getLoanService().validateStudent(getObservableListStudent(), student);
     }
 
-    //Funcion Loan
+    @Override
+    public Student studentMaxLoans() {
+        return laboratorio.getUserService().studentMaxLoans();
+    }
+
+    //Function Loan
     @Override
     public Boolean addLoan(String element, String student, Integer amount, Integer id){
         return laboratorio.getLoanService().addLoan(element,student,amount,id, laboratorio.getElementService().getObservableListElement(), laboratorio.getUserService().getStudentObservableList());
@@ -151,9 +162,18 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     public void searchLoan(FilteredList<Loan> loanFilteredList, TextField textField) {
         laboratorio.getLoanService().searchLoan(loanFilteredList, textField);
     }
+    @Override
+    public void reloadTableC(ObservableList<Element> elements, ObservableList<Student> students){
+        laboratorio.getLoanService().reloadTable(elements, students);
+    }
     //Monitor
     @Override
     public void editLoansMonitor(){
         laboratorio.getMonitorService().editLoans();
+    }
+
+    @Override
+    public Monitor monitorInformation() {
+        return laboratorio.getMonitorService().monitorInformation();
     }
 }

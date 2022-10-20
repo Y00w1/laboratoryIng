@@ -15,4 +15,5 @@ public interface LoanService {
     int getCodeGenerator();
     Boolean addLoan(String element, String student, Integer amount,Integer id, ObservableList<Element> elements, ObservableList<Student> students);
     void searchLoan(FilteredList<Loan> loanFilteredList, TextField textField);
+    void reloadTable(ObservableList<Element> elements, ObservableList<Student> students);
 }
