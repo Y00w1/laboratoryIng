@@ -40,6 +40,11 @@ public class ModelFactoryController implements ModelFactoryControllerService {
     }
 
     @Override
+    public void switchToInformationScene(ActionEvent e) throws IOException {
+        laboratorio.getSceneService().switchToInformationScene(e);
+    }
+
+    @Override
     public void switchToElementScene(ActionEvent e) throws IOException {
         laboratorio.getSceneService().switchToElementScene(e);
 

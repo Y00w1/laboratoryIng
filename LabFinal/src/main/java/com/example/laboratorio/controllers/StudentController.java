@@ -69,6 +69,11 @@ StudentController implements Initializable {
     }
 
     @FXML
+    public void informationChange(ActionEvent event) throws IOException{
+        mfc.switchToInformationScene(event);
+    }
+
+    @FXML
     public void addStudentBtn(ActionEvent actionEvent) {
         mfc.btnAddStudent(idStudent.getText(), nameStudent.getText(), emailStudent.getText(), numberStudent.getText(), comboxCareer.getSelectionModel().getSelectedItem(), Integer.parseInt(semesterStudent.getText()));
         tbStudent.setItems(mfc.getObservableListStudent());

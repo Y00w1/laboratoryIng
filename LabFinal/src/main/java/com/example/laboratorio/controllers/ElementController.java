@@ -88,6 +88,11 @@ public class ElementController implements Initializable {
     void studentChange(ActionEvent event) throws IOException {
         mfc.switchToStudentScene(event);
     }
+
+    @FXML
+    public void informationChange(ActionEvent event) throws IOException{
+        mfc.switchToInformationScene(event);
+    }
     @FXML
     public void buttonDeleteE(ActionEvent actionEvent) {
         Element elementDelete = tblElement.getSelectionModel().getSelectedItem();

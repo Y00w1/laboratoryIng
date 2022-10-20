@@ -69,6 +69,11 @@ public class LoanController implements Initializable {
         mfc.switchToStudentScene(event);
     }
 
+    @FXML
+    public void informationChange(ActionEvent event) throws IOException{
+        mfc.switchToInformationScene(event);
+    }
+
     public void addLoan(ActionEvent actionEvent) {
         Boolean valid = mfc.addLoan(loanElement.getText(),loanStudent.getText(),Integer.parseInt(loanAmount.getText()),mfc.laboratorio.getLoanService().getCodeGenerator()+100);
         if (valid){
@@ -90,7 +95,6 @@ public class LoanController implements Initializable {
         FilteredList<Loan> loanFilteredList = new FilteredList<>(mfc.getObservableListLoan(), p->true);
         tbLoan.setItems(loanFilteredList);
         mfc.searchLoan(loanFilteredList, searchLoanTxt);
-        resultsElements.setText(mfc.validateElement(searchLoanTxt.getText()).getLoans()+" Results found");
     }
 
     @FXML

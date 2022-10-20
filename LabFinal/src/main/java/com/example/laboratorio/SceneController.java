@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class SceneController implements SceneService {
     private Stage stage;
@@ -19,7 +20,7 @@ public class SceneController implements SceneService {
     ModelFactoryController mfc = ModelFactoryController.getInstance();
 
     public void switchScene(ActionEvent e, String resource) throws IOException {
-        root = FXMLLoader.load(getClass().getResource(resource));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(resource)));
         stage = (Stage) ((Node) e.getSource()).getScene().getWindow();
         scene = new Scene(root, 600, 500);
         stage.setScene(scene);
@@ -36,5 +37,9 @@ public class SceneController implements SceneService {
     }
     public void switchToLoanScene(ActionEvent e) throws IOException{
         switchScene(e,"loan-view.fxml");
+    }
+
+    public void switchToInformationScene(ActionEvent e) throws IOException {
+        switchScene(e,"information-view.fxml");
     }
 }

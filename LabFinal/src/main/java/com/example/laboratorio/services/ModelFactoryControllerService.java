@@ -35,6 +35,7 @@ public interface ModelFactoryControllerService {
     void switchToStudentScene(ActionEvent e) throws IOException;
     void switchToElementScene(ActionEvent e) throws IOException;
     void switchToLoanScene(ActionEvent e) throws IOException;
+    void switchToInformationScene(ActionEvent e) throws IOException;
 
     //Loan
     Boolean addLoan(String element, String student, Integer amount, Integer id);
